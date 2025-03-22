@@ -42,7 +42,7 @@ if st.button("Analyze", key="analyze_button"):
 
     # Display only 2 articles
     st.header("📰 Latest News Articles")
-    for article in articles[:2]:  # Only process the first 2 articles
+    for article in articles[:10]:  # Only process the first 2 articles
         with st.expander(f"**{article['title']}**"):
             st.write(f"**Summary:** {article['summary']}")
             
@@ -74,7 +74,7 @@ if st.button("Analyze", key="analyze_button"):
 
     # Perform Coverage Differences
     st.header("🔍 Coverage Differences")
-    coverage_differences = perform_comparative_analysis(articles[:2])
+    coverage_differences = perform_comparative_analysis(articles[:10])
     if not coverage_differences:
         st.warning("Not enough articles for comparison.")
     else:
@@ -85,7 +85,7 @@ if st.button("Analyze", key="analyze_button"):
 
     # Analyze topic overlap
     st.header("📌 Topic Overlap")
-    topic_overlap = analyze_topic_overlap(articles[:2], summarizer)
+    topic_overlap = analyze_topic_overlap(articles, summarizer)
     st.write(f"**Common Topics:** {', '.join(topic_overlap['Common Topics'])}")
     for key, topics in topic_overlap['Unique Topics'].items():
         with st.expander(f"**{key} Unique Topics**"):
