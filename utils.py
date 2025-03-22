@@ -36,7 +36,7 @@ def scrape_news(company_name):
         articles = []
         
         # Extract relevant information
-        for article in data.get("articles", [])[:2]:
+        for article in data.get("articles", [])[:10]:
             title = article.get("title", "No title")
             summary = article.get("description", "No summary")
             articles.append({"title": title, "summary": summary})
